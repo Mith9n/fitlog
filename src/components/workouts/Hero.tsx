@@ -6,9 +6,9 @@ export default function Hero() {
   return (
     <section className="mx-auto mt-10 w-[calc(100%-32px)] max-w-[1200px]">
       {/* Hero Card */}
-      <div className="grid min-h-[300px] grid-cols-1 items-center overflow-hidden rounded-[14px] border border-[#25272d] bg-[#15161b] px-6 py-8 sm:px-10 md:h-[360px] md:min-h-0 md:grid-cols-[1.25fr_0.75fr] md:px-[46px] md:py-0 lg:h-[420px]">
+      <div className="grid min-h-[300px] grid-cols-1 items-center overflow-hidden rounded-[14px] border border-[#25272d] bg-[#15161b] px-6 py-8 sm:px-10 md:h-[390px] md:min-h-0 md:grid-cols-[1.25fr_0.75fr] md:px-[46px] md:py-0 lg:h-[460px]">
         {/* Left: Text Content */}
-        <div className="relative z-10">
+        <div className="relative z-10 order-2 text-center md:order-1 md:text-left">
           <p className="mb-5 text-[10px] font-bold tracking-[1.5px] text-[#c8ff00]">
             WORKOUT LIBRARY
           </p>
@@ -33,7 +33,7 @@ export default function Hero() {
         </div>
 
         {/* Right: Workout Image */}
-        <div className="relative mx-auto h-[300px] w-full max-w-[340px] md:h-full md:max-w-none">
+        <div className="relative mx-auto order-1 h-[220px] w-full max-w-[340px] sm:h-[260px] md:order-2 md:h-full md:max-w-none">
           <Image
             src="/assets/banner.png"
             alt="Workout training illustration"

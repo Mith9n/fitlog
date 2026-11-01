@@ -32,8 +32,8 @@ export default function Navbar() {
   const is_plan_active = pathname === "/my-plan" || pathname.startsWith("/my-plan/");
 
   return (
-    <header className="h-[70px] border-b border-[#202124] bg-[#0b0c0e] text-white">
-      <nav className="relative mx-auto flex h-full items-center justify-between px-6">
+    <header className="border-b border-[#202124] bg-[#0b0c0e] text-white md:h-[70px]">
+      <nav className="relative mx-auto flex min-h-[70px] flex-wrap items-center justify-between gap-x-2 gap-y-2 px-4 py-3 md:h-full md:flex-nowrap md:px-6 md:py-0">
         {/* Logo + Brand Name */}
         <Link href="/" className="flex shrink-0 items-center gap-2">
          <Image
@@ -51,7 +51,7 @@ export default function Navbar() {
         </Link>
 
         {/* Center Navigation */}
-        <div className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
+        <div className="order-3 flex basis-full items-center justify-center gap-1 md:absolute md:left-1/2 md:order-none md:basis-auto md:-translate-x-1/2">
           {/* Workouts */}
           <Link
             href="/"
@@ -78,7 +78,7 @@ export default function Navbar() {
         </div>
 
         {/* Right: Plan + Saved */}
-        <div className="flex shrink-0 items-center gap-5">
+        <div className="flex shrink-0 items-center gap-3 sm:gap-5">
           <Link
             href="/my-plan#plan"
             className="flex items-center gap-2 text-[10px] text-[#e4e4e7] transition-colors hover:text-[#c8ff00]"
