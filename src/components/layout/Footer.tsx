@@ -13,6 +13,7 @@ export default function Footer() {
             alt="FitLog Logo"
             width={28}
             height={28}
+            className="h-7 w-7 shrink-0 object-contain"
           />
 
           <span className="text-lg font-black">

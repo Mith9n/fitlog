@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Check, Clock3, Flame, Star } from "lucide-react";
 import {
+  COMPLETED_STORAGE_KEY,
   PLAN_STORAGE_KEY,
   read_workouts,
   SAVED_STORAGE_KEY,
@@ -43,6 +44,7 @@ export default function MyPlanPage() {
     function update_workouts() {
       set_plan(read_workouts<Workout>(PLAN_STORAGE_KEY));
       set_saved(read_workouts<Workout>(SAVED_STORAGE_KEY));
+      set_completed_ids(read_workouts<number>(COMPLETED_STORAGE_KEY));
     }
 
     sync_active_tab();
@@ -91,9 +93,13 @@ export default function MyPlanPage() {
   function remove_workout(id: number) {
     if (active_tab === "plan") {
       const updated_plan = plan.filter((item) => item.id !== id);
+      const updated_completed_ids = completed_ids.filter(
+        (item_id) => item_id !== id
+      );
       set_plan(updated_plan);
       save_workouts(PLAN_STORAGE_KEY, updated_plan);
-      set_completed_ids((ids) => ids.filter((item_id) => item_id !== id));
+      set_completed_ids(updated_completed_ids);
+      save_workouts(COMPLETED_STORAGE_KEY, updated_completed_ids);
     } else {
       const updated_saved = saved.filter((item) => item.id !== id);
       set_saved(updated_saved);
@@ -102,9 +108,11 @@ export default function MyPlanPage() {
   }
 
   function mark_as_done(id: number) {
-    set_completed_ids((ids) =>
-      ids.includes(id) ? ids : [...ids, id]
-    );
+    if (completed_ids.includes(id)) return;
+
+    const updated_completed_ids = [...completed_ids, id];
+    set_completed_ids(updated_completed_ids);
+    save_workouts(COMPLETED_STORAGE_KEY, updated_completed_ids);
   }
 
   if (is_loading) {

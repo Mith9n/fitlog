@@ -1,5 +1,6 @@
 export const PLAN_STORAGE_KEY = "fitlog_plan";
 export const SAVED_STORAGE_KEY = "fitlog_saved";
+export const COMPLETED_STORAGE_KEY = "fitlog_completed";
 
 const WORKOUTS_UPDATED_EVENT = "fitlog:workouts-updated";
 
